@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // Array of questions, options, and correct answers
-const questions = [
+const quizData = [
   {
     question: "What is the largest bone in the human body?",
     options: ["Femur", "Tibia", "Humerus"],
