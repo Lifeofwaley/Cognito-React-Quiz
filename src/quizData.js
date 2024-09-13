@@ -51,6 +51,31 @@ const quizData = [
     question: "Which blood cells help in clotting?",
     options: ["White blood cells", "Red blood cells", "Platelets"],
     answer: "Platelets"
+  },
+  {
+    question: "What is the largest organ in the human body?",
+    options: ["Heart", "Skin", "Liver"],
+    answer: "Skin"
+  },
+  {
+    question: "What part of the body is responsible for producing insulin?",
+    options: ["Liver", "Pancreas", "Kidney"],
+    answer: "Pancreas"
+  },
+  {
+    question: "Which bone protects the brain?",
+    options: ["Ribcage", "Skull", "Pelvis"],
+    answer: "Skull"
+  },
+  {
+    question: "What is the primary function of red blood cells?",
+    options: ["Carry oxygen", "Fight infection", "Clot blood"],
+    answer: "Carry oxygen"
+  },
+  {
+    question: "Which organ is known as the body's detox center?",
+    options: ["Liver", "Kidney", "Lungs"],
+    answer: "Liver"
   }
 ];
 
@@ -65,12 +90,12 @@ function Quiz() {
     setSelectedOption(option);
 
     setTimeout(() => {
-      if (option === questions[currentQuestion].answer) {
+      if (option === quizData[currentQuestion].answer) {
         setScore(score + 1);
       }
 
       const nextQuestion = currentQuestion + 1;
-      if (nextQuestion < questions.length) {
+      if (nextQuestion < quizData.length) {
         setCurrentQuestion(nextQuestion);
       } else {
         setShowScore(true);
@@ -85,7 +110,7 @@ function Quiz() {
     if (selectedOption) {
       return {
         backgroundColor:
-          option === questions[currentQuestion].answer
+          option === quizData[currentQuestion].answer
             ? "#28a745"
             : "#dc3545",
         color: "#fff",
@@ -100,20 +125,20 @@ function Quiz() {
     <div style={styles.quizContainer}>
       {showScore ? (
         <div style={styles.scoreSection}>
-          You scored {score} out of {questions.length}
+          You scored {score} out of {quizData.length}
         </div>
       ) : (
         <>
           <div style={styles.questionSection}>
             <div style={styles.questionCount}>
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
+              <span>Question {currentQuestion + 1}</span>/{quizData.length}
             </div>
             <div style={styles.questionText}>
-              {questions[currentQuestion].question}
+              {quizData[currentQuestion].question}
             </div>
           </div>
           <div style={styles.answerSection}>
-            {questions[currentQuestion].options.map((option, index) => (
+            {quizData[currentQuestion].options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleAnswerOptionClick(option)}
